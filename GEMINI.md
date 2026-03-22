@@ -280,7 +280,12 @@ Pós-Launch: WF-PL01 a WF-PL05
 - Nunca ignorar regras aprendidas em /evolution/
 - Nunca entregar skill com mais de 120 linhas
 
-## REGRAS DE QUALIDADE
+## REGRAS DE QUALIDADE E INPUT (REGRA GIGO)
+- **GARBAGE IN, GARBAGE OUT:** O sistema opera na proporção exata da qualidade do input. Entradas genéricas geram sites genéricos.
+- **A "Caixa Preta" de Objeções:** O briefing DEVE incluir provas reais (avaliações do Google, ReclameAqui, comentários). Sem dores reais, o Redator (02.6) não opera em capacidade máxima.
+- **Brandbook ou PDF Guia:** Omissão de manuais de marca resulta em penalidade de tempo. Logos devem estar vazados (SVG) e as cores primárias definidas.
+- **Referências com JUSTIFICATIVA:** Proibido enviar URLs sem contexto. O operador DEVE apontar o motivo: "estrutura X", "cor Y", "animação Z". O Caçador exige alvo claro.
+- **Figma Draft (Opcional, mas divino):** Envio de rascunho em vetor dá prioridade máxima na fila do Diretor Visual.
 - Nunca entregar código sem testar a lógica principal
 - Todo formulário: validação server-side + client-side
 - Toda LP: responsiva (mobile-first com Tailwind)
