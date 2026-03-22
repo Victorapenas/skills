@@ -1,259 +1,120 @@
 ---
 name: briefing
 description: >
-  Ative esta skill quando precisar coletar informações de um novo projeto,
-  estruturar requisitos de uma landing page ou site, ou quando o usuário
-  disser "novo projeto", "criar LP", "preciso de um site", "quero uma landing page".
-  Também ative quando o Orquestrador identificar lacunas críticas no briefing existente.
+  Coleta requisitos (Entrevistador). 6 blocos + funil.
+  Ative para novo projeto, "criar LP", "preciso de site".
 ---
 
-# Agente de Briefing — PHP Landing Page Factory
+# Briefing v6.0
 
 ## Função
-Coletar, aprofundar, organizar, validar e estruturar as informações do cliente
-e do projeto com o máximo de clareza possível, para que o restante do sistema
-trabalhe com uma base estratégica sólida.
+Coletar, aprofundar, organizar e validar requisitos do cliente.
+Nasce para coletar, morre após entregar briefing.md validado.
 
-Você não decide estrutura final, não escreve copy, não faz benchmark.
-Sua responsabilidade é entender profundamente o cliente e o projeto.
-
----
+## ANTES DE EXECUTAR
+1. Ler /evolution/briefing.md (se existir)
+2. Registrar início em monitor.md
 
 ## Regras Fundamentais
-
-- **NUNCA** invente nada — se não souber, escreva "NÃO DEFINIDO"
+- **NUNCA** invente — se não souber: "NÃO DEFINIDO"
 - **NUNCA** aceite respostas vagas sem aprofundar
 - **SEMPRE** marque suposições como "HIPÓTESE"
-- **SEMPRE** capture evidências (URLs, prints, links)
-- **SEMPRE** aprofunde quando a resposta for genérica (ex: "quero algo moderno")
-
-### Exemplo de aprofundamento obrigatório:
-Se o cliente diz "quero algo moderno", perguntar:
-- Moderno em que sentido? Minimalista, premium, ousado, tecnológico, clean?
-- Existem referências de sites que você gosta?
-- Prefere algo escuro ou claro? Foco em autoridade ou conversão?
+- **SEMPRE** aprofunde quando genérico ("moderno" → "minimalista ou premium?")
+- Se não sabe: dar opções ("seria mais A ou B?")
 
 ---
 
-## Processo de Coleta — 6 Blocos
+## 6 Blocos de Perguntas
 
-Conduza a conversa em blocos. Espere resposta de cada bloco antes de continuar.
-Faça no máximo 5-6 perguntas por bloco para não sobrecarregar o cliente.
-
-### Bloco 1 — Produto / Serviço
-1. O que você vende ou oferece? (descrição em 1-2 frases)
-2. Qual é o diferencial principal em relação à concorrência?
+### Bloco 1 — Produto/Serviço
+1. O que você vende ou oferece?
+2. Qual é o diferencial principal?
 3. Qual é o preço ou faixa de preço?
-4. Tem garantia, bônus ou política de reembolso?
-5. Quais são os resultados reais que seus clientes obtêm?
+4. Tem garantia, bônus ou reembolso?
+5. Quais resultados reais seus clientes obtêm?
 
 ### Bloco 2 — Público-Alvo
-6. Quem é o cliente ideal? (perfil: idade, profissão, situação de vida)
-7. Qual é a dor principal que seu produto/serviço resolve?
-8. O que esse cliente já tentou antes que não funcionou?
+6. Quem é o cliente ideal? (perfil: idade, profissão, situação)
+7. Qual é a dor principal que resolve?
+8. O que esse cliente já tentou que não funcionou?
 9. O que esse cliente sonha em alcançar?
-10. Quais são as principais objeções de quem não compra?
+10. Quais as principais objeções de quem não compra?
 
-### Bloco 3 — Objetivo da LP / Site
-11. Qual é a ação principal que o visitante deve tomar?
-    (preencher formulário / comprar / ligar / WhatsApp / agendar / baixar)
-12. Tem alguma oferta especial ou urgência para comunicar?
-13. Vai usar prova social? (depoimentos, número de clientes, logos de parceiros)
-14. O tráfego será pago (ads), orgânico ou indicação?
-15. O visitante vem frio (não te conhece) ou morno/quente?
+### Bloco 3 — Objetivo da LP
+11. Ação principal? (form / comprar / WhatsApp / agendar / baixar)
+12. Tem oferta especial ou urgência?
+13. Vai usar prova social? (depoimentos, números, logos)
+14. Tráfego pago ou orgânico?
+15. Visitante frio, morno ou quente?
 
-### Bloco 4 — Identidade Visual e Referências
-16. Tem logo? Se sim, compartilhe ou descreva.
-17. Tem paleta de cores definida? (código hex ou descrição)
-18. Qual é o tom da comunicação?
-    (formal / descontraído / técnico / empático / urgente / premium)
-19. Tem referências visuais de sites que você gosta? (URLs)
-20. Tem referências que NÃO quer que pareça?
+### Bloco 4 — Identidade Visual
+16. Tem logo? Compartilhe ou descreva.
+17. Tem paleta de cores? (hex ou descrição)
+18. Qual é o tom da comunicação? (formal/descontraído/premium/técnico)
+19. Referências visuais que gosta? (URLs)
+20. Referências que NÃO quer parecer?
 
 ### Bloco 5 — Ativos Disponíveis
-21. Tem fotos reais? (do cliente, da equipe, do produto, do serviço)
-22. Tem vídeos? (depoimentos, demonstrações, apresentação)
+21. Tem fotos reais? (equipe, produto, serviço)
+22. Tem vídeos? (depoimentos, demos)
 23. Tem portfólio ou cases documentados?
-24. Tem depoimentos escritos ou em vídeo?
+24. Tem depoimentos escritos ou vídeo?
 25. Tem textos, apresentações ou materiais anteriores?
 
-### Bloco 6 — Técnico e Integrações
-26. Onde vai ser hospedado? (Hostinger / Railway / VPS / ainda não sabe)
+### Bloco 6 — Técnico
+26. Hospedagem? (Hostinger / Railway / VPS / XAMPP)
 27. Tem domínio próprio?
-28. Vai integrar com alguma ferramenta? (CRM, email marketing, WhatsApp API)
-29. Precisa de pixel de rastreamento? (Facebook Pixel, Google Ads)
-30. Qual é o prazo esperado?
+28. Integrações? (CRM, email marketing, WhatsApp API)
+29. Pixels de rastreamento? (Facebook, Google Ads)
+30. Prazo esperado?
+
+### Bloco Extra — Funil
+- Tipo de conversão? (form, WhatsApp, agendamento)
+- Quantas etapas?
+- Página de obrigado?
+- WhatsApp direto?
+Se não definir → Arq.Conversão decide com dados do benchmark.
 
 ---
 
-## Lógica de Condução da Conversa
-
-1. Iniciar com Bloco 1 (não perguntar tudo de uma vez)
-2. Se o cliente responder de forma genérica → aprofundar antes de continuar
-3. Após os 6 blocos → montar o briefing estruturado
-4. Apresentar o briefing para o cliente confirmar
-5. Registrar lacunas que não foram esclarecidas
-
-### Quando o cliente está confuso ou não sabe responder:
-- Dar exemplos concretos para facilitar a resposta
-- Oferecer opções ("seria mais como A ou mais como B?")
-- Registrar como HIPÓTESE e seguir — não travar o processo
+## Lógica de Condução
+1. Apresentar 1 bloco por vez
+2. Esperar resposta antes de avançar
+3. Se genérico → aprofundar com exemplos
+4. Após 6 blocos → montar briefing.md
+5. Apresentar para confirmação do cliente
 
 ---
 
-## Formato Exato do briefing.md de Saída
+## Saída: /projetos/[nome]/briefing.md
 
-Após a coleta completa, gerar o arquivo:
-`/projetos/[nome-do-projeto]/briefing.md`
+Formato com 11 seções:
+1. Identificação (nome, cliente, site, redes, região)
+2. Tipo e Objetivo (tipo, objetivo, CTA, definição sucesso)
+3. Contexto do Negócio (produto, oferta, preço, diferenciais)
+4. Público-Alvo (perfil, top 5 dores, top 5 desejos, top 5 objeções)
+5. Tráfego e Jornada (origem, dispositivo, antes/depois da conversão)
+6. Provas e Ativos (depoimentos, cases, números, fotos, vídeos)
+7. Direção de Marca (percepção, tom, palavras evitar, refs)
+8. Técnico (stack, hospedagem, integrações, pixels, prazo)
+9. Formulário e Captura (mecanismo, campos, obrigado, destino lead)
+10. Tracking (GA4, GTM, Pixel, eventos, UTMs)
+11. Pendências e Lacunas (críticas, médias, hipóteses)
 
-```
-# Briefing — [Nome do Projeto]
-Data: [data]
-Versão: 1.0
-
----
-
-## 1. Identificação
-- **Projeto (nome interno):** [nome]
-- **Cliente / marca:** [nome]
-- **Site atual:** [URL ou "não tem"]
-- **Redes sociais:** [URLs]
-- **Região / idioma:** [estado/país e idioma]
-- **Responsável no cliente:** [nome e contato]
-
-## 2. Tipo de Entrega e Objetivo
-- **Tipo:** [Landing Page / Site / Híbrido]
-- **Objetivo principal:** [1 frase clara]
-- **CTA principal:** [Form / WhatsApp / Agendar / Comprar / Ligar]
-- **Definição de conversão bem-sucedida:** [o que é "sucesso"]
-- **Meta numérica:** [se existir, ou "não definido"]
-
-## 3. Contexto do Negócio
-- **O que a empresa vende:** [1 frase]
-- **Produto/serviço principal:** [descrição]
-- **Oferta atual:** [o que inclui, condições, escopo]
-- **Preço / faixa:** [valor ou "NÃO DEFINIDO"]
-- **Diferenciais reais:** [lista com evidências]
-- **Restrições** (o que NÃO pode prometer): [lista]
-
-## 4. Público-Alvo
-- **Público primário:** [perfil detalhado]
-- **Dores (top 5):**
-    1. 
-    2. 
-    3. 
-    4. 
-    5. 
-- **Desejos (top 5):**
-    1. 
-    2. 
-    3. 
-    4. 
-    5. 
-- **Objeções (top 5):**
-    1. 
-    2. 
-    3. 
-    4. 
-    5. 
-- **Linguagem do público:** [frases reais que eles usam]
-- **Nível de consciência:** [Frio / Morno / Quente] + explicação
-
-## 5. Tráfego e Jornada
-- **Origem principal:** [Ads / Orgânico / Social / Indicação]
-- **Dispositivo dominante:** [Mobile / Desktop]
-- **O que a pessoa viu antes de chegar na página:**
-- **Próximo passo após a conversão:**
-- **SLA de resposta:** [tempo real de retorno]
-
-## 6. Provas e Ativos Disponíveis
-- **Depoimentos:** [quantos, onde estão]
-- **Cases:** [links ou descrição]
-- **Números:** [quais, com evidência]
-- **Portfólio:** [link ou "não tem"]
-- **Logo / brand:** [tem / não tem / precisa criar]
-- **Fotos reais:** [tem / não tem / precisa produzir]
-- **Vídeos:** [tem / não tem]
-
-## 7. Direção de Marca
-- **Como quer ser percebido:** [descrição]
-- **Tom de voz:** [3 adjetivos + exemplos]
-- **Palavras a evitar:**
-- **Referências visuais (gosta):** [URLs]
-- **Referências visuais (não gosta):** [URLs]
-
-## 8. Técnico e Integrações
-- **Stack preferida:** [PHP Vanilla / Laravel] + justificativa
-- **Hospedagem / domínio:** [onde e qual]
-- **Integrações necessárias:** [CRM, email, WhatsApp, etc.]
-- **Pixels:** [Facebook / Google / nenhum]
-- **Prazo:** [data ou estimativa]
-- **Restrições legais:** [LGPD, termos, garantias]
-
-## 9. Formulário e Captura
-- **Mecanismo:** [Form / WhatsApp / Agenda / Checkout]
-- **Campos obrigatórios:** [lista]
-- **Página de obrigado:** [sim/não + objetivo]
-- **Destino do lead:** [CRM / webhook / email / planilha / banco]
-
-## 10. Tracking
-- **GA4:** [sim/não + ID]
-- **GTM:** [sim/não + container]
-- **Meta Pixel:** [sim/não + ID]
-- **Google Ads:** [sim/não]
-- **Eventos obrigatórios:** [lista]
-- **UTMs:** [quais capturar]
-
-## 11. Pendências e Lacunas
-- **Críticas** (bloqueiam produção):
-- **Médias** (não bloqueiam mas precisam ser resolvidas):
-- **Hipóteses assumidas** (para validar com o cliente):
-
-## 12. Status do Briefing
-- [ ]  Completo e apto para avançar
-- [ ]  Parcialmente completo (lacunas médias aceitas)
-- [ ]  Insuficiente (lacunas críticas bloqueiam avanço)
++ **Resumo para Orquestrador:** 5 linhas + top 3 lacunas + próximo agente
 
 ---
 
-## Resumo para o Orquestrador
-- **Resumo executivo (5 linhas):**
-- **Top 3 lacunas críticas:**
-- **Próximo agente recomendado:** [Benchmark / Estrutura LP] + justificativa
-- **Principais riscos:**
-```
+## Validação
 
----
+**APTO** quando:
+- Objetivo e CTA inequívocos
+- Público com dores e objeções reais
+- Oferta clara e sem ambiguidade
+- Destino do lead definido
 
-## Regras de Validação do Briefing
-
-O briefing pode ser considerado **APTO** para avançar quando:
-- Objetivo e CTA são inequívocos
-- Público tem dores e objeções identificadas
-- Oferta está descrita sem ambiguidade
-- Destino do lead está definido
-- Principais restrições estão registradas
-
-O briefing está **INSUFICIENTE** quando:
-- Objetivo é vago ("quero mais clientes")
-- CTA não está definido
-- Público é "todo mundo"
-- Oferta não tem preço nem escopo
-- Não há provas de nenhum tipo mapeadas
-
----
-
-## Após Criar o briefing.md
-
-Informar ao usuário/orquestrador (Regra de Fluxo Autônomo):
-> "[Etapa] concluída. Seguindo para [próxima etapa]."
-
-Se APTO: Engatilhar imediatamente `@skill estrutura-lp` ou `@skill benchmark` (transição autônoma).
-Se INSUFICIENTE: Voltar para o usuário para preenchimento de lacunas via MODO DECISÃO ("Preciso de uma decisão antes de continuar").
-
-
-## Ao Concluir Esta Etapa
-Atualize o contexto-projeto.md:
-- Marque esta etapa como concluída com a data
-- Registre decisões tomadas na seção "Decisões Tomadas"
-- Informe a próxima etapa no campo "Próxima etapa"
+**INSUFICIENTE** quando:
+- Objetivo vago ("quero mais clientes")
+- CTA indefinido
+- Público "todo mundo"
+- Oferta sem preço nem escopo

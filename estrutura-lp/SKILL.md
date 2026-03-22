@@ -1,236 +1,102 @@
 ---
 name: estrutura-lp
 description: >
-  Ative esta skill para criar o wireframe estrutural da landing page.
-  Use após briefing e benchmark estarem prontos. Ative quando o usuário
-  pedir "criar estrutura", "montar wireframe", "planejar a LP", ou quando
-  o Orquestrador indicar que é a próxima etapa.
+  Cria wireframe (Arq.LP ou Arq.Site). Incorpora funil recomendado.
+  Ative após benchmark e funil completos.
 ---
 
-# Agente de Estrutura de Landing Page — PHP Landing Page Factory
+# Estrutura LP v6.0
 
 ## Função
-Transformar briefing + benchmark em arquitetura estrutural de conversão.
-Não escrevo a copy final e não faço o design final.
-Projeto a arquitetura estratégica da LP, organizando a distribuição,
-ordem e lógica dos elementos com base no objetivo de conversão.
+Transformar briefing + benchmark + funil em arquitetura de conversão.
+Criar wireframe com lógica de seções, CTAs e responsividade.
+
+## ANTES DE EXECUTAR
+1. Ler /evolution/estrutura-lp.md (se existir)
+2. Registrar início em monitor.md
+
+## Entradas Obrigatórias
+- /projetos/[nome]/briefing.md
+- /projetos/[nome]/benchmark.md
+- /projetos/[nome]/funil.md
 
 ---
 
-## Entradas Obrigatórias (ler antes de começar)
+## Passo 1 — Classificação Inicial
 
-- `/projetos/[nome]/briefing.md`
-- `/projetos/[nome]/benchmark.md` (quando existir)
-- CTA principal e mecanismo de conversão
-- Temperatura do tráfego (frio / morno / quente)
+Definir:
+- **Objetivo**: captura / venda / WhatsApp / agendamento
+- **CTA principal**: texto e ação
+- **Temperatura**: frio / morno / quente
+- **Nível de consciência**: inconsciente / ciente do problema / ciente da solução / ciente do produto
+- **Complexidade**: simples / média / alta
 
----
+## Passo 2 — Espinha Dorsal
 
-## Passo 1 — Confirmar Objetivo e Tipo de LP
+| Espinha | Quando usar |
+|---------|-------------|
+| **Direta** | Tráfego quente, oferta simples, CTA direto |
+| **Autoridade** | Tráfego frio, ticket alto, precisa construir confiança |
+| **Educativa** | Público pouco consciente do problema |
+| **Consultiva** | Serviço complexo, precisa qualificar lead |
+| **Demonstração** | Público precisa ver para crer |
+| **Comparativa** | Público está comparando alternativas |
 
-Antes de estruturar, confirmar:
+## Passo 3 — Tamanho da LP
 
-1. **Objetivo:** leads / venda / WhatsApp / agendamento / evento / download
-2. **CTA principal:** form / botão WhatsApp / botão comprar / calendly
-3. **Temperatura do tráfego:** frio (não te conhece) / morno / quente
-4. **Nível de consciência do público:**
-   - Inconsciente (não sabe que tem o problema)
-   - Consciente do problema (sabe que tem, não sabe a solução)
-   - Consciente da solução (sabe o que precisa, não sabe que você existe)
-   - Consciente do produto (sabe que você existe, ainda não decidiu)
-   - Totalmente consciente (pronto para comprar)
-5. **Complexidade da decisão:** simples / emocional / racional / ticket alto
+| Tamanho | Seções | Quando |
+|---------|--------|--------|
+| **Curta** | 4-6 | Tráfego quente, oferta simples |
+| **Média** | 7-10 | Tráfego morno, precisa prova |
+| **Longa** | 10+ | Tráfego frio, ticket alto |
 
----
+## Passo 4 — Seções Obrigatórias
 
-## Passo 2 — Escolher a Espinha Dorsal
+1. **Hero** (clareza + CTA) — SEMPRE 1ª seção
+2. **Prova social** (depoimentos, números)
+3. **Benefícios / Resultados**
+4. **CTA principal** (após benefícios e ao final)
+5. **FAQ / Objeções**
 
-Com base nas respostas anteriores, escolher a lógica macro da LP:
+## Seções Opcionais
 
-| Espinha Dorsal | Quando Usar |
-|---|---|
-| **Direta** | Tráfego quente, oferta simples, decisão rápida |
-| **Autoridade** | Tráfego frio, ticket médio-alto, precisa construir confiança |
-| **Educativa** | Público pouco consciente, precisa entender o problema |
-| **Consultiva** | Serviço complexo, público precisa ser qualificado |
-| **Demonstração** | Produto físico, software, precisa ver para crer |
-| **Comparativa** | Público já considerando alternativas |
-| **Híbrida** | Combinação de duas lógicas (ex.: autoridade + direta) |
+Problema | Como funciona | Para quem é / não é | Sobre o especialista |
+Portfólio | Comparativo | Garantia | Urgência | Vídeo | Mapa | Parceiros
 
----
+## Passo 5 — Plano de CTAs
 
-## Passo 3 — Definir Tamanho da LP
+- **Hero**: SEMPRE (1º CTA visível)
+- **Meio**: após benefícios ou prova social
+- **Final**: antes do footer
 
-| Tamanho | Quando Usar | Qtd Seções |
-|---|---|---|
-| **Curta** | Tráfego quente, oferta simples, CTA único | 4–6 seções |
-| **Média** | Tráfego morno, precisa de prova e objeções | 7–10 seções |
-| **Longa** | Tráfego frio, ticket alto, decisão complexa | 10+ seções |
+Texto específico, nunca genérico:
+- ✅ "Quero minha consultoria gratuita"
+- ❌ "Enviar" / "Clique aqui" / "Saiba mais"
 
----
+## Passo 6 — Spec por Seção
 
-## Passo 4 — Mapear Seções
+Para cada seção definir:
+- **Função**: por que existe
+- **Conteúdo obrigatório**: o que deve conter
+- **Provas**: depoimentos, números, logos
+- **CTA**: se tem, qual texto e ação
+- **Mobile**: como se comporta (stack, prioridade)
+- **Tracking**: evento associado
 
-### Seções Obrigatórias (presentes em praticamente toda LP):
+## Passo 7 — Validar contra funil.md
 
-| Seção | Função | Posição |
-|---|---|---|
-| **Hero** | Clareza de promessa + CTA imediato | Sempre 1ª |
-| **Prova social** | Construir confiança | Antes ou depois dos benefícios |
-| **Benefícios / Resultados** | Mostrar o que o cliente ganha | Meio |
-| **CTA principal** | Converter | Após benefícios e ao final |
-| **FAQ / Objeções** | Remover barreiras | Antes do CTA final |
-
-### Seções Opcionais (decidir caso a caso):
-
-| Seção | Quando Incluir |
-|---|---|
-| **Problema / Contexto** | Tráfego frio ou inconsciente |
-| **Como funciona / Processo** | Serviço complexo ou novidade |
-| **Para quem é / não é** | Qualificação de lead |
-| **Sobre o especialista / Empresa** | Ticket alto, autoridade necessária |
-| **Portfólio / Cases** | Serviço criativo, B2B, construção |
-| **Comparativo / Planos** | SaaS, assinatura, múltiplos planos |
-| **Garantia** | Ticket alto, mercado desconfiante |
-| **Urgência / Escassez** | Oferta com prazo ou vagas limitadas |
-| **Vídeo** | Demonstração, depoimento, apresentação |
-| **Mapa / Localização** | Negócio local com endereço |
-| **Parceiros / Selos** | Credibilidade institucional |
+- Funil recomendado está refletido no wireframe?
+- Página de obrigado prevista?
+- CTAs consistentes com tipo de funil?
 
 ---
 
-## Passo 5 — Definir CTAs e Pontos de Conversão
+## Saída: /projetos/[nome]/wireframe.md
 
-### Regras de CTA:
-- CTA principal deve aparecer no Hero (sempre)
-- CTA deve se repetir no meio e ao final da LP
-- Texto do CTA deve ser específico ("Quero minha consultoria gratuita")
-  — nunca genérico ("Enviar" / "Clique aqui")
-- Micro-CTAs podem aparecer após seções de prova forte
-
-### Plano de CTAs para registrar:
-- CTA 1 (Hero): [texto + tipo]
-- CTA 2 (meio): [texto + posição]
-- CTA 3 (final): [texto]
-- Micro-CTAs (se houver): [onde e texto]
-
----
-
-## Passo 6 — Definir Requisitos por Seção
-
-Para cada seção, definir:
-- **Função:** (clareza / promessa / prova / objeção / conversão)
-- **Conteúdo obrigatório:** (o que a copy precisa ter)
-- **Provas / ativos necessários:** (imagem, depoimento, número, caso)
-- **CTA associado:** (sim/não + texto sugerido)
-- **Comportamento mobile:** (instruções específicas)
-- **Tracking:** (evento a disparar)
-
----
-
-## Formato do wireframe.md de Saída
-
-Gerar o arquivo: `/projetos/[nome-do-projeto]/wireframe.md`
-
-```
-# Wireframe Estrutural — [Nome do Projeto]
-Data: [data]
-Tipo: Landing Page
-Espinha dorsal: [lógica macro]
-Tamanho: [Curta / Média / Longa]
-
----
-
-## Diagnóstico e Decisões
-- Objetivo: [objetivo principal]
-- CTA principal: [mecanismo]
-- Temperatura do tráfego: [frio/morno/quente]
-- Nível de consciência: [nível]
-- Justificativa da espinha dorsal: [por que esta lógica]
-
----
-
-## Mapa Estrutural — Seções em Ordem
-
-### SEÇÃO 01 — HERO
-- **Função:** Capturar atenção, comunicar promessa principal, CTA imediato
-- **Conteúdo obrigatório:**
-    - Headline principal (promessa em 1 frase)
-    - Subheadline (contexto ou complemento)
-    - 3 benefícios rápidos em bullets
-    - CTA principal
-    - Microcopy de privacidade/tempo
-- **Provas/ativos necessários:** [ex: foto real do especialista / logo da empresa]
-- **CTA:** Sim — "[texto sugerido]"
-- **Mobile:** CTA visível acima da dobra; imagem reenquadrada para vertical
-- **Tracking:** event: view_hero | click_cta_hero
-
-### SEÇÃO 02 — [NOME]
-- **Função:**
-- **Conteúdo obrigatório:**
-- **Provas/ativos:**
-- **CTA:** [Sim/Não] — "[texto]"
-- **Mobile:**
-- **Tracking:**
-
-[repetir para cada seção]
-
----
-
-## Plano de CTAs
-- CTA 1 (Hero): "[texto]" — [tipo: form/botão/whatsapp]
-- CTA 2 (meio, seção X): "[texto]"
-- CTA 3 (final): "[texto]"
-
----
-
-## Dependências para os Próximos Agentes
-
-### Para Copy:
-- Provas ainda faltando:
-- Objeções prioritárias a tratar:
-- Tom específico por seção:
-
-### Para Direção Visual:
-- Assets necessários por seção: [lista]
-- Direção de mídia sugerida:
-- Seções com necessidade de destaque especial:
-
-### Para Dev/PHP:
-- Componentes/partials necessários:
-- Elementos interativos: [tabs, acordeão, modal]
-- Páginas adicionais: [obrigado, legal]
-
----
-
-## Critérios de Aprovação
-- [ ]  Cada seção tem função explícita
-- [ ]  CTA aparece no Hero e se repete com intenção
-- [ ]  Mobile não depende de scroll infinito para converter
-- [ ]  Dependências estão todas listadas
-- [ ]  Estrutura coerente com tráfego e oferta
-```
-
----
-
-## Critérios de Qualidade
-
-A estrutura está boa quando:
-- Cada seção existe por uma razão estratégica
-- A ordem tem lógica persuasiva (não é lista aleatória de blocos)
-- CTA e prova são distribuídos com intenção
-- Mobile é tratado como prioridade
-- Dependências para copy e visual estão claras
-
-**Proibições:**
-- ❌ Não criar seção "bonita" sem função
-- ❌ Não colocar CTA único apenas no final
-- ❌ Não inventar provas que não existem
-- ❌ Não fazer estrutura antes de confirmar objetivo e CTA
-
-
-## Ao Concluir Esta Etapa
-Atualize o contexto-projeto.md:
-- Marque esta etapa como concluída com a data
-- Registre decisões tomadas na seção "Decisões Tomadas"
-- Informe a próxima etapa no campo "Próxima etapa"
+Formato:
+- Diagnóstico (5 classificações)
+- Espinha dorsal escolhida + justificativa
+- Mapa estrutural (seção por seção com spec)
+- Plano de CTAs (posição + texto + ação)
+- Specs do formulário (campos, validação)
+- Responsividade (breakpoints, stack mobile)

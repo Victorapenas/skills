@@ -1,292 +1,133 @@
 ---
 name: copy
 description: >
-  Ative esta skill para escrever a copy completa da landing page por seção.
-  Use após wireframe estrutural estar aprovado. Ative quando o usuário pedir
-  "escrever os textos", "criar a copy", "escrever a LP", ou quando o
-  Orquestrador indicar que é a próxima etapa após estrutura aprovada.
+  Escreve copy por seção (Redator). Estuda top 5 antes.
+  Ative após wireframe aprovado.
 ---
 
-# Agente de Copy — PHP Landing Page Factory
+# Copy v6.0
 
 ## Função
-Transformar briefing + benchmark + wireframe em mensagem clara, específica
-e orientada à conversão. Não invento provas e não crio estrutura do zero.
-Trabalho sempre a partir do wireframe aprovado.
+Transformar briefing + wireframe em mensagem clara e orientada à conversão.
+Toda copy serve à conversão — elegância é consequência, não objetivo.
+
+## ANTES DE EXECUTAR
+1. Ler /evolution/copy.md (se existir)
+2. Estudar top 5 LPs do benchmark
+3. Registrar início em monitor.md
+
+## Entradas: briefing.md + benchmark.md + wireframe.md
 
 ---
 
-## Entradas Obrigatórias (ler antes de escrever)
-
-- `/projetos/[nome]/briefing.md` — contexto do cliente
-- `/projetos/[nome]/benchmark.md` — padrões do mercado (quando existir)
-- `/projetos/[nome]/wireframe.md` — estrutura aprovada
-
----
-
-## Princípios de Copy
-
-### Hierarquia de prioridades:
-1. Clareza > criatividade
-2. Simplicidade > complexidade desnecessária
-3. Função > estética
-4. Estratégia > criatividade
-5. Especificidade > generalidade
-6. Personalidade > padronização vazia
-
-### O que NUNCA fazer:
-- ❌ Inventar números, garantias, depoimentos, "clientes famosos"
-- ❌ Usar clichês sem evidência ("qualidade incomparável", "excelência")
-- ❌ Escrever texto institucional genérico
-- ❌ Usar vícios clássicos de linguagem IA (ex: "No mundo atual", "Embarque nessa jornada", "Desvende os segredos", "Mergulhe em"). O copy deve soar 100% humano, dinâmico e natural.
-- ❌ Alongar sem função
-- ❌ Contrariar a estrutura do wireframe
-- ❌ Prometer o que o cliente não autoriza prometer
-
-### Quando faltar prova:
-Marcar como `[PENDENTE — aguardando: descrição do que falta]`
-Não inventar. Registrar lacuna e seguir.
+## Princípios
+- **Clareza > criatividade** — em 10s deve ficar claro: o que é, pra quem, qual resultado
+- **Função > estética** — cada frase serve a um objetivo
+- **Estratégia > criatividade** — copy deriva da estratégia, não de inspiração
+- **Especificidade > generalidade** — "37 projetos entregues" > "muita experiência"
+- NUNCA inventar números, garantias, depoimentos → marcar **[PENDENTE]**
+- CTAs alinhados com tipo de funil (funil.md)
 
 ---
 
-## Passo 1 — Diagnóstico de Comunicação
+## Passo 1 — Diagnóstico
 
-Antes de escrever, responder:
-1. Quem é o público e qual o nível de consciência?
-2. Qual promessa é permitida (restrições do briefing)?
-3. Qual é a ação principal esperada?
-4. Qual é o ângulo de abordagem? (dor / desejo / autoridade / oportunidade / medo / transformação)
-5. Qual é o tom? (direto / empático / urgente / premium / técnico)
+Definir ANTES de escrever:
+- **Público**: quem vai ler
+- **Consciência**: frio / morno / quente
+- **Promessa permitida**: o que pode prometer com prova
+- **Ação desejada**: CTA principal
+- **Ângulo**: dor / desejo / autoridade / oportunidade
+- **Tom**: formal / descontraído / premium / técnico / empático
 
----
+## Passo 2 — Linha Estratégica
 
-## Passo 2 — Linha Estratégica da Mensagem
+- **Ângulo** (1 frase que resume a abordagem)
+- **3 argumentos** centrais (com prova para cada)
+- **Top 5 objeções** (com resposta para cada)
+- **Provas disponíveis** (depoimentos, números, cases)
 
-Definir antes de escrever qualquer seção:
+## Passo 3 — Copy por Seção
 
-- **Ângulo principal:** [1 frase — ex: "A consultoria que dobrou o faturamento de 47 autônomos"]
-- **3 argumentos centrais:**
-  1. [argumento baseado em diferencial real]
-  2. [argumento baseado em prova ou resultado]
-  3. [argumento que remove a principal objeção]
-- **Top 5 objeções a tratar:**
-  1.
-  2.
-  3.
-  4.
-  5.
-- **Provas disponíveis:** [lista do que existe no briefing]
+### HERO
+- 3 variações de H1
+- 1 subheadline
+- 3-6 bullets de reforço
+- CTA com texto específico
+- Microcopy abaixo do CTA (ex: "Sem compromisso · Resposta em 24h")
 
----
+### PROBLEMA
+- Frase de identificação ("Você já...")
+- 3-5 dores reais do público
 
-## Passo 3 — Copy por Seção (seguir wireframe)
+### SOLUÇÃO
+- Apresentação clara do que é
+- Escopo (o que inclui)
+- Proposta de valor (1 frase)
 
-Para cada seção do wireframe, escrever:
+### BENEFÍCIOS
+Para cada benefício:
+- Benefício (o que ganha)
+- Prova (como sabe que é verdade)
+- Consequência (o que muda na vida)
 
-### HERO — obrigatório:
-- **H1 (3 variações — escolher a melhor):**
-  - V1: [headline]
-  - V2: [headline]
-  - V3: [headline]
-- **Subheadline:** [complementa o H1, máx 2 linhas]
-- **Benefícios rápidos (3-6 bullets):**
-  - ✓ [benefício específico e verificável]
-  - ✓ [benefício]
-  - ✓ [benefício]
-- **CTA principal:** [texto do botão]
-- **Microcopy:** [privacidade, tempo de resposta, sem spam]
+### PROVA SOCIAL
+- Depoimentos reais com nome e contexto
+- Se não tem: marcar [PENDENTE: depoimentos reais]
 
-### Seções de Problema/Contexto:
-- Frase de abertura que gera identificação
-- 3-5 bullets de dores reais do público (linguagem deles)
-- Transição para a solução
+### PROCESSO
+- 3-5 passos nomeados ("Passo 1: Diagnóstico gratuito")
 
-### Seções de Solução/Oferta:
-- Apresentação clara do produto/serviço
-- O que está incluso (escopo real)
-- Proposta de valor em 1 frase
-
-### Seções de Benefícios/Resultados:
-- Cada benefício com evidência quando possível
-- Formato: benefício + prova + consequência
-- Evitar lista de características sem contexto
-
-### Seções de Prova Social:
-- Depoimento real (nome + foto quando existir)
-- Resultado específico ("Aumentei 40% em 3 meses" > "Muito bom")
-- [PENDENTE — aguardando depoimentos] se não existir
-
-### Seções de Processo/Como Funciona:
-- Máx 3-5 passos
-- Nome de cada passo (não só número)
-- Descrição curta e clara
-
-### Seções de FAQ/Objeções:
-- 5-7 perguntas reais do público
+### FAQ
+- 5-7 perguntas reais que o público faz
 - Respostas honestas e diretas
-- A última pergunta pode ser o CTA
 
-### CTA Final:
-- Reforçar a promessa principal
-- Criar senso de urgência real (não inventado)
-- Texto do botão específico
-
----
-
-## Fórmulas de Headline
-
-### Para tráfego frio (inconsciente/problema):
-- "Como [resultado desejado] sem [obstáculo principal]"
-- "A razão pela qual [problema] — e o que fazer sobre isso"
-- "O que ninguém te contou sobre [tema]"
-
-### Para tráfego morno (consciente da solução):
-- "[Resultado específico] em [tempo] mesmo que [objeção principal]"
-- "Finalmente: [solução] para [público específico]"
-
-### Para tráfego quente (consciente do produto):
-- "[Oferta específica]: [benefício principal] — [urgência/escassez]"
-- "Últimas [X] vagas: [oferta]"
-
-### Para autoridade:
-- "Mais de [número] [clientes/projetos/anos] transformando [resultado]"
+### CTA FINAL
+- Reforço da promessa principal
+- Urgência real (se existir)
+- CTA com texto específico
 
 ---
+
+## Fórmulas de Headline por Temperatura
+
+| Temperatura | Fórmula | Exemplo |
+|-------------|---------|---------|
+| Frio | "Como [resultado] sem [obstáculo]" | "Como renovar sua casa sem estourar o orçamento" |
+| Morno | "[Resultado] em [tempo] mesmo que [objeção]" | "Projeto completo em 45 dias mesmo com pouco espaço" |
+| Quente | "[Oferta]: [benefício] — [urgência]" | "Consultoria gratuita: descubra o potencial do seu espaço — vagas limitadas" |
 
 ## Fórmulas de CTA
 
-**Específico e orientado a ação:**
 - "Quero minha [X] gratuita"
 - "Começar meu [resultado]"
-- "Garantir minha vaga"
-- "Falar com especialista agora"
-- "Ver como funciona"
+- "Agendar minha [consulta/demonstração]"
+- NUNCA: "Enviar" / "Clique aqui" / "Saiba mais"
 
-**Nunca:**
-- "Enviar"
-- "Clique aqui"
-- "Saiba mais" (sem contexto)
-- "Acesse"
+## Microcopy de Formulário
 
----
+- Labels: "Seu nome completo", "Melhor e-mail"
+- Placeholders: "Maria Silva", "maria@email.com"
+- Erro: "Por favor, informe um e-mail válido"
+- Sucesso: "Pronto! Você será redirecionado..."
+- Privacidade: "Seus dados estão seguros. Não enviamos spam."
 
-## Formato do copy.md de Saída
-
-Gerar o arquivo: `/projetos/[nome-do-projeto]/copy.md`
-
-```
-# Copy — [Nome do Projeto]
-Data: [data]
-Versão: 1.0
-Público: [público-alvo]
-Objetivo/CTA: [objetivo e ação]
-Tom de voz: [descrição]
+## SEO
+- **Title**: 50-60 caracteres, com palavra-chave principal
+- **Meta description**: 150-160 caracteres, com CTA implícito
 
 ---
 
-## Linha Estratégica
-- **Ângulo principal:** [1 frase]
-- **Argumento 1:** [argumento]
-- **Argumento 2:** [argumento]
-- **Argumento 3:** [argumento]
-- **Objeções prioritárias:** [lista]
-- **Provas disponíveis:** [lista]
-- **Restrições:** [o que não pode prometer]
+## Saída: /projetos/[nome]/copy.md (versionado: copy-v1, copy-v2)
 
----
+Seções: Linha estratégica, Copy por seção, Microcopy formulário,
+FAQ, SEO (title + meta), Pendências, Checklist
 
-## Copy por Seção
-
-### HERO
-
-**H1 (variação escolhida):**
-[headline principal]
-
-**Variações alternativas:**
-- V2: [headline]
-- V3: [headline]
-
-**Subheadline:**
-[subheadline]
-
-**Bullets de benefícios:**
-- ✓ [benefício 1]
-- ✓ [benefício 2]
-- ✓ [benefício 3]
-
-**CTA:** [texto do botão]
-**Microcopy:** [texto de privacidade/tempo]
-
----
-
-### SEÇÃO 02 — [NOME]
-
-**Headline da seção:**
-[headline]
-
-**Texto:**
-[copy da seção]
-
-**Bullets:**
-- [bullet 1]
-- [bullet 2]
-- [bullet 3]
-
-**Prova associada:** [depoimento/número/case — ou PENDENTE]
-**CTA (se houver):** [texto]
-
-[repetir para todas as seções]
-
----
-
-## Formulário e Microcopy de Conversão
-- **Labels dos campos:** [nome, email, telefone, etc.]
-- **Texto do botão de submit:** [texto]
-- **Mensagem de sucesso:** [texto]
-- **Mensagem de erro:** [texto]
-- **WhatsApp (se aplicável):** [texto do botão + mensagem pré-preenchida]
-
----
-
-## FAQ
-
-**P: [pergunta real do público]**
-R: [resposta honesta]
-
-**P: [pergunta]**
-R: [resposta]
-
----
-
-## SEO e Metadados
-- **Title:** [50-60 caracteres]
-- **Meta description:** [150-160 caracteres]
-- **Palavra-chave principal:** [termo]
-- **Palavras-chave secundárias:** [lista]
-
----
-
-## Pendências
-- [ ]  [prova faltante ou aprovação necessária]
-
-## Checklist de Qualidade
-- [ ]  Clareza em 10s (o que é / para quem / resultado)
-- [ ]  CTA explícito e coerente
-- [ ]  Objeções relevantes tratadas
-- [ ]  Provas reais (ou pendências marcadas)
-- [ ]  Sem clichês vazios
-- [ ]  Escaneável em mobile
-```
-
-## Testes de Naturalidade — Obrigatórios
-Antes de finalizar, faça uma varredura real no texto e REESCREVA se encontrar:
-[ ] "No mundo atual / Nos dias de hoje" (Exclua, vá direto ao ponto)
-[ ] "Embarque nessa jornada / Transforme sua vida" (Troque por ação concreta)
-[ ] "Desvende os segredos / Descubra como" (Troque por "Veja como" ou direto o benefício)
-[ ] Excesso de adjetivos (ex: plataforma incrível, revolucionária e exclusiva)
-
-## Ao Concluir Esta Etapa
-Atualize o contexto-projeto.md:
-- Marque esta etapa como concluída com a data
-- Registre decisões tomadas na seção "Decisões Tomadas"
-- Informe a próxima etapa no campo "Próxima etapa"
+## Checklist de Copy
+- [ ] Em 10s fica claro: o que é, pra quem, qual resultado
+- [ ] CTA específico e coerente com funil
+- [ ] Objeções top 5 tratadas
+- [ ] Provas distribuídas ao longo da LP
+- [ ] Escaneável no mobile (parágrafos curtos, bullets)
+- [ ] Sem frases de IA ("embarque nessa jornada", "no mundo atual")
+- [ ] Sem [PENDENTE] não documentado

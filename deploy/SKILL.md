@@ -1,144 +1,89 @@
 ---
 name: deploy
 description: >
-  Ative esta skill para fazer o deploy da landing page em produção.
-  Use quando o usuário pedir "publicar", "fazer deploy", "subir para produção",
-  "colocar no ar", ou após o QA estar aprovado. REQUER QA APROVADO ANTES.
+  Deploy em produção. SOMENTE após QA APROVADO + aprovação humana #4.
 ---
 
-# Agente de Deploy — PHP Landing Page Factory
+# Deploy v6.0
 
-## PRÉ-REQUISITO OBRIGATÓRIO
+## Função
+Publicar projeto em produção. Ambiente seguro, testado, monitorado.
 
-**ANTES DE QUALQUER AÇÃO:**
-Verificar se `/projetos/[nome]/output/relatorio-qa.md` existe e contém:
-`Resultado Geral: APROVADO` ou `Resultado Geral: APROVADO COM AJUSTES`
+## ANTES DE EXECUTAR
+1. Ler /evolution/deploy.md (se existir)
+2. Confirmar relatorio-qa.md = APROVADO
+3. Registrar início em monitor.md
 
-**Se QA não aprovado → RECUSAR deploy:**
-> "O QA deste projeto ainda não foi aprovado.
-> Execute `@skill qa` antes de prosseguir com o deploy."
-
----
-
-## Verificações Pré-Deploy — Antes de Qualquer Upload
-1. Versão do PHP do destino confere com a local?
-2. .htaccess bloqueando acesso a `/config` ou `.env` está presente?
-3. Permissões de pasta de cache (storage) estão em 775?
-4. Extensões PDO e cURL estão ativas no destino?
-5. Faça um plano de rollback antes de apertar o botão.
+## ⏸️ APROVAÇÃO HUMANA #4 obrigatória antes de executar
 
 ---
 
-## Checklist Pré-Deploy Obrigatório
+## Checklist Pré-Deploy
 
-- [ ] Relatório de QA: APROVADO
-- [ ] Código em `/projetos/[nome]/output/code/` completo
-- [ ] META_PIXEL_ID e GA4_ID devidamente preenchidos no .env caso o projeto envolva tráfego pago
-- [ ] `.env.example` preenchido com todas as variáveis
-- [ ] SQL documentado
-- [ ] Domínio definido e apontado
-- [ ] Credenciais de acesso ao servidor disponíveis
-- [ ] SSL/HTTPS disponível
+- [ ] QA APROVADO (relatorio-qa.md)
+- [ ] Código completo e funcional
+- [ ] .env de produção configurado
+- [ ] APP_DEBUG=false
+- [ ] SQL schema disponível
+- [ ] Domínio e credenciais confirmados
 
 ---
 
-## AMBIENTE 1 — Hostinger Compartilhado (Vanilla PHP)
+## Ambientes de Deploy
 
-**Melhor para:** LP simples, formulário básico, hospedagem existente
+### HOSTINGER COMPARTILHADO (Vanilla PHP)
+1. hPanel → Databases → MySQL → Create (anotar host, dbname, user, pass)
+2. phpMyAdmin → executar schema.sql
+3. Ajustar config/database.php (localhost, u12345678_banco)
+4. Upload via hPanel File Manager ou FTP
+5. Testar formulário em produção com dado real
+6. SSL: hPanel → Security → Force HTTPS
 
-### Passo a Passo:
-1. **BANCO:** hPanel → Databases → MySQL → Create Database → phpMyAdmin → executar schema.sql
-2. **CREDENCIAIS:** Editar config/database.php com dados reais (host geralmente localhost)
-3. **UPLOAD:** hPanel File Manager ou FTP (FileZilla) → public_html/
-4. **HTTPS:** hPanel → Security → SSL/TLS → Force HTTPS → Enable
-5. **TESTAR:** Acessar URL no celular → preencher form → verificar banco via phpMyAdmin → verificar pixel e GA4
+### RAILWAY (Laravel)
+1. Deploy from GitHub Repo
+2. Add MySQL Database
+3. Variables: APP_KEY, APP_ENV=production, APP_DEBUG=false, DB_*
+4. Start: `php artisan migrate --force && php artisan serve --port=$PORT`
+5. Custom domain + SSL automático
 
----
+### VPS NGINX (Laravel)
+1. `git clone /var/www/projeto`
+2. `composer install --no-dev --optimize-autoloader`
+3. `cp .env.example .env && php artisan key:generate`
+4. `php artisan migrate --force`
+5. `php artisan config:cache && route:cache && view:cache`
+6. `chown -R www-data:www-data` / `chmod 775 storage`
+7. Nginx config: `root /var/www/projeto/public`
+8. `certbot --nginx -d dominio.com`
 
-## AMBIENTE 2 — Railway (Laravel)
-
-**Melhor para:** Projetos Laravel, deploy rápido via GitHub
-
-### Passo a Passo:
-1. **REPO:** git init → push para GitHub
-2. **RAILWAY:** New Project → Deploy from GitHub Repo
-3. **BANCO:** + New → Database → MySQL (variáveis automáticas)
-4. **ENV:** Configurar APP_KEY, APP_ENV=production, APP_DEBUG=false, DB_*, pixels
-5. **START:** `php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=$PORT`
-6. **DOMÍNIO:** Settings → Custom Domain → CNAME no DNS
-7. **TESTAR:** Acessar URL → testar formulário → verificar banco
-
----
-
-## AMBIENTE 3 — VPS com Nginx (Laravel avançado)
-
-**Melhor para:** Projetos complexos com maior controle
-
-### Passo a Passo:
-1. SSH no servidor
-2. Instalar: nginx, php8.3-fpm, php8.3-mysql, mysql-server, git, composer, certbot
-3. Clonar repo em /var/www/projeto
-4. composer install --no-dev --optimize-autoloader
-5. Configurar .env
-6. php artisan key:generate, migrate, config:cache, route:cache, view:cache
-7. Permissões: www-data, 755/775 storage e bootstrap/cache
-8. Configurar Nginx (server block com try_files, fastcgi_pass)
-9. ln -s sites-available → sites-enabled, nginx -t, reload
-10. SSL via certbot --nginx
-11. Testar em produção
+### cPANEL (Hostgator, KingHost)
+Mesmo fluxo do Hostinger, adaptando ao painel de controle específico.
 
 ---
 
-## Passo Final — Registrar o Deploy
+## Pós-Deploy
 
-Atualizar `/projetos/[nome]/registro.md`:
+- [ ] Formulário testado com dado real
+- [ ] Lead aparece no banco de dados
+- [ ] Pixels verificados (Pixel Helper, GA4 DebugView)
+- [ ] SSL ativo + redirect HTTP→HTTPS
+- [ ] Funil completo testado ponta a ponta
+- [ ] Atualizar registro.md com data, ambiente, URL, SSL, status
+- [ ] Atualizar /_projetos.md com URL final
+- [ ] Status: **PRODUÇÃO ATIVA ✅**
 
-```
-## Deploy em Produção
-- **Data e hora:** [data]
-- **Ambiente:** [Hostinger / Railway / VPS]
-- **URL de produção:** [URL]
-- **SSL ativo:** Sim
-- **HTTPS forçado:** Sim
-- **Formulário testado:** Sim — [data]
-- **Lead de teste registrado:** Sim
-- **Pixel disparando:** [Sim / Não configurado]
-- **GA4 registrando:** [Sim / Não configurado]
-- **Status:** ✅ PRODUÇÃO ATIVA
-
-## Histórico de Deploy
-[data] - Deploy inicial em [ambiente] — [responsável]
-```
-
----
-
-## Regras de Segurança em Produção
+## Segurança em Produção
 
 - [ ] APP_DEBUG=false
 - [ ] display_errors=Off
-- [ ] .env não acessível via navegador (testar: seudominio.com/.env → 403/404)
-- [ ] APP_KEY gerado e único
-- [ ] Banco com usuário de permissões mínimas (não root)
-- [ ] Backup automático (se VPS)
-- [ ] SSL válido com renovação automática
+- [ ] .env inacessível publicamente
+- [ ] APP_KEY gerado (Laravel)
+- [ ] Banco com permissões mínimas
 
 ---
 
-## Mensagem Final ao Usuário
-
-```
-✅ Deploy concluído com sucesso!
-🌐 URL de produção: [URL]
-🔒 SSL ativo: Sim
-📋 Formulário testado: Sim
-📊 Lead de teste: Registrado no banco
-📁 Documentação atualizada em: /projetos/[nome]/registro.md
-Projeto finalizado e em produção. 🚀
-```
-
-
-## Ao Concluir Esta Etapa
-Atualize o contexto-projeto.md:
-- Marque esta etapa como concluída com a data
-- Registre decisões tomadas na seção "Decisões Tomadas"
-- Informe a próxima etapa no campo "Próxima etapa"
+## Saída
+- URL do site live
+- registro.md atualizado
+- /_projetos.md atualizado
+- Otimizador Pós-Launch inicia WF-PL01
