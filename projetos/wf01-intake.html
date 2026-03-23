@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WF-01 Intake | Antigravity Gateway</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono&family=Inter:wght@400;500;600;700&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        bg: '#09090b',  /* Quase preto profundo */
+                        surface: '#18181b', /* Fundo do form */
+                        surfaceHover: '#27272a',
+                        border: '#3f3f46',
+                        accent: '#6366f1',
+                        accentGlow: 'rgba(99, 102, 241, 0.4)',
+                        success: '#10b981',
+                        warning: '#f59e0b',
+                        danger: '#ef4444',
+                        textMain: '#ffffff', /* BRANCO PURO para visibilidade máxima */
+                        textMuted: '#94a3b8'
+                    },
+                    fontFamily: {
+                        display: ['Outfit', 'sans-serif'],
+                        body: ['Inter', 'sans-serif'],
+                        mono: ['DM Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: theme('colors.bg');
+            color: theme('colors.textMain');
+            font-family: theme('fontFamily.body');
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
+            background-attachment: fixed;
+            overflow-x: hidden;
+        }
+        h1, h2, h3, h4, h5, h6 { font-family: theme('fontFamily.display'); letter-spacing: -0.02em; }
+        
+        .glass-panel {
+            background: rgba(24, 24, 27, 0.65);
+            backdrop-filter: blur(16px);
+            border: 1px solid theme('colors.border');
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        /* FIX VISUAL DOS INPUTS: Evitar fundo preto que some com o texto */
+        .input-premium {
+            width: 100%;
+            background-color: #1e293b !important; /* Slate 800 - Fundo visivelmente cinza chumbo */
+            border: 1px solid theme('colors.border');
+            color: #ffffff !important; /* Forçando BRANCO ABSOLUTO para as letras */
+            padding: 0.875rem 1rem;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);
+        }
+        .input-premium:focus {
+            outline: none;
+            border-color: theme('colors.accent');
+            background-color: #0f172a !important; /* Slate 900 - Ao focar, fica levemente mais escuro que Slate 800, mas texto continua branco */
+            box-shadow: 0 0 0 3px theme('colors.accentGlow'), inset 0 2px 4px rgba(0,0,0,0.5);
+        }
+        .input-premium::placeholder { color: #94a3b8 !important; }
+
+        /* Upload File Input Styling */
+        input[type="file"]::file-selector-button {
+            background-color: theme('colors.surfaceHover');
+            color: theme('colors.textMain');
+            border: 1px solid theme('colors.border');
+            border-radius: 0.375rem;
+            padding: 0.5rem 1rem;
+            margin-right: 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+        input[type="file"]::file-selector-button:hover { background-color: theme('colors.border'); }
+
+        .mic-btn { transition: all 0.2s; cursor: pointer; }
+        .mic-btn:hover { color: theme('colors.accent'); transform: scale(1.1); }
+        .mic-active { color: theme('colors.danger') !important; animation: pulse-mic 1.5s infinite; }
+        @keyframes pulse-mic {
+            0% { transform: scale(1); text-shadow: 0 0 0 rgba(239, 68, 68, 0.7); }
+            50% { transform: scale(1.2); text-shadow: 0 0 10px rgba(239, 68, 68, 0.9); }
+            100% { transform: scale(1); text-shadow: 0 0 0 rgba(239, 68, 68, 0); }
+        }
+
+        .screen { display: none; opacity: 0; transition: opacity 0.4s ease; }
+        .screen.active { display: flex; opacity: 1; }
+        .block-section { display: none; animation: slideIn 0.4s ease forwards; }
+        .block-section.active { display: block; }
+        @keyframes slideIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: theme('colors.bg'); }
+        ::-webkit-scrollbar-thumb { background: theme('colors.border'); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: theme('colors.textMuted'); }
+
+        .nav-item { border-left: 2px solid transparent; transition: all 0.2s; }
+        .nav-item.active { border-left-color: theme('colors.accent'); background: rgba(99, 102, 241, 0.1); color: theme('colors.textMain'); font-weight: 600; }
+        .radio-card input:checked + div { border-color: theme('colors.accent'); background: rgba(99, 102, 241, 0.05); }
+        .toast { position: fixed; bottom: 24px; right: 24px; transform: translateY(100px); opacity: 0; transition: all 0.3s; z-index: 100; }
+        .toast.show { transform: translateY(0); opacity: 1; }
+
+        /* Loader para Envio */
+        .loader-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 999; display: none; flex-direction: column; items-center; justify-content: center; backdrop-filter: blur(5px); }
+        .loader-overlay.active { display: flex; }
+        .spinner { width: 50px; height: 50px; border: 5px solid rgba(99, 102, 241, 0.3); border-top-color: theme('colors.accent'); border-radius: 50%; animation: spin 1s linear infinite; mb-4; }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+    </style>
+</head>
+<body class="h-screen w-screen overflow-hidden antialiased">
+    <!-- Loader Overlay -->
+    <div id="loader" class="loader-overlay">
+        <div class="spinner mb-4"></div>
+        <h2 class="text-2xl font-bold text-white font-display mb-2">Processando Intake...</h2>
+        <p class="text-textMuted" id="loader-status">Criando diretórios e transferindo assets localmente.</p>
+    </div>
+
+    <!-- SPLASH SCREEN -->
+    <div id="screen-splash" class="screen active h-full w-full flex-col items-center justify-center relative">
+        <div class="glass-panel p-10 rounded-2xl max-w-lg w-full text-center relative z-10 shadow-2xl">
+            <h1 class="text-4xl font-bold font-display text-white mb-2">Antigravity Gateway</h1>
+            <p class="text-textMuted mb-8 text-lg">Intake Module WF-01 v7.0 (File System Edition)</p>
+            <div class="grid grid-cols-1 gap-4">
+                <button onclick="startNewProject()" class="w-full relative group overflow-hidden rounded-xl p-0.5 bg-gradient-to-r from-accent to-purple-600 focus:outline-none">
+                    <div class="bg-surface group-hover:bg-opacity-0 transition-all duration-300 rounded-[10px] px-6 py-4 flex items-center justify-center gap-3">
+                        <span class="text-xl">✨</span><span class="font-bold text-white text-lg">Começar Novo Projeto</span>
+                    </div>
+                </button>
+            </div>
+            <p class="text-xs text-warning mt-6 border border-warning/30 bg-warning/10 p-2 rounded">Requer processador PHP local rodando na porta correta.</p>
+        </div>
+    </div>
+
+    <!-- MAIN APP SCREEN -->
+    <div id="screen-app" class="screen h-full w-full bg-bg">
+        <!-- Sidebar -->
+        <aside class="w-72 flex-shrink-0 glass-panel border-r border-border flex flex-col h-full z-20 absolute md:relative -translate-x-full md:translate-x-0" id="sidebar">
+            <div class="p-6 border-b border-border flex justify-between items-center bg-surface/50">
+                <div><h2 class="text-lg font-bold text-white uppercase tracking-wider">Interface Coletora</h2></div>
+            </div>
+            <nav class="flex-1 overflow-y-auto py-6 px-3 space-y-1" id="sidebar-nav"></nav>
+            <div class="p-5 border-t border-border bg-surface/30">
+                <div class="h-2 w-full bg-black rounded-full overflow-hidden border border-border">
+                    <div id="progress-bar" class="h-full bg-gradient-to-r from-accent to-purple-500 transition-all duration-500 w-0"></div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Form Area -->
+        <main class="flex-1 h-full overflow-y-auto relative scroll-smooth bg-[#09090b]" id="main-scroll">
+            <div class="max-w-4xl mx-auto p-6 md:p-10 w-full pb-32">
+                
+                <div class="flex justify-between items-end mb-10 pb-4 border-b border-border">
+                    <div>
+                        <h1 id="block-title" class="text-3xl font-bold font-display text-white mb-2">Seção</h1>
+                        <p id="block-desc" class="text-textMuted text-lg">Preencha os dados abaixo.</p>
+                    </div>
+                </div>
+
+                <!-- Form com enctype para envio de arquivos -->
+                <form id="intake-form" onsubmit="submitIntake(event)">
+                    
+                    <!-- B0: Identificação -->
+                    <section id="b0" class="block-section active">
+                        <div class="space-y-6">
+                            <div class="glass-panel p-8 rounded-2xl">
+                                <h3 class="text-xl font-bold text-white mb-4">Dados Core</h3>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div class="md:col-span-2">
+                                        <label class="block text-sm font-medium text-textMuted mb-2">Nome do Projeto (Para nome da Pasta) <span class="text-danger">*</span></label>
+                                        <input type="text" id="projeto_nome" name="projeto_nome" required class="input-premium text-lg font-semibold" placeholder="Ex: Lançamento Mentoria VIP" oninput="updateSlug(this.value)">
+                                    </div>
+                                    <input type="hidden" id="projeto_slug" name="projeto_slug">
+                                    <div>
+                                        <label class="block text-sm font-medium text-textMuted mb-2">Cliente / Marca</label>
+                                        <input type="text" name="cliente_marca" class="input-premium" placeholder="Nome da empresa">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-textMuted mb-2">Nicho Específico</label>
+                                        <input type="text" name="nicho" class="input-premium" placeholder="Ex: Advocacia Trabalhista">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="glass-panel p-8 rounded-2xl">
+                                <h3 class="text-xl font-bold text-white mb-4">Arquitetura Primordial</h3>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <label class="radio-card cursor-pointer block relative">
+                                        <input type="radio" name="tipo_projeto" value="Landing Page Simples" class="hidden" checked>
+                                        <div class="p-5 border border-border rounded-xl transition hover:bg-surfaceHover bg-surface">
+                                            <div class="font-bold text-white text-lg">🎯 Landing Page (Principal)</div>
+                                            <div class="text-sm text-textMuted">Página vertical focada em conversão e VSL.</div>
+                                        </div>
+                                    </label>
+                                    <label class="radio-card cursor-pointer block relative">
+                                        <input type="radio" name="tipo_projeto" value="Site Multi-Páginas" class="hidden">
+                                        <div class="p-5 border border-border rounded-xl transition hover:bg-surfaceHover bg-surface">
+                                            <div class="font-bold text-white text-lg">🏗️ Site / Catálogo (Longo)</div>
+                                            <div class="text-sm text-textMuted">Múltiplas páginas ou complexidade adicional.</div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- B1 e B2: Agrupados (Copy & Schwartz) -->
+                    <section id="b1" class="block-section">
+                        <div class="space-y-6">
+                            <div class="glass-panel p-8 rounded-2xl">
+                                <h3 class="text-xl font-bold text-white mb-4">Informações do Produto (Gravação de Áudio)</h3>
+                                <div class="space-y-6">
+                                    <div>
+                                        <div class="flex justify-between items-center mb-2">
+                                            <label class="text-sm font-medium text-textMuted">Oferta (O que é?)</label>
+                                            <button type="button" onclick="toggleMic('oferta', this)" class="mic-btn bg-surface px-2 py-1 rounded border border-border">🎤 Áudio</button>
+                                        </div>
+                                        <textarea id="oferta" name="oferta" rows="2" class="input-premium"></textarea>
+                                    </div>
+                                    <div>
+                                        <div class="flex justify-between items-center mb-2">
+                                            <label class="text-sm font-medium text-textMuted">Dor Externa e Interna do Cliente (Storybrand)</label>
+                                            <button type="button" onclick="toggleMic('dor_externa', this)" class="mic-btn bg-surface px-2 py-1 rounded border border-border">🎤 Áudio</button>
+                                        </div>
+                                        <textarea id="dor_externa" name="dor_externa" rows="3" class="input-premium" placeholder="O cliente se sente frustrado pois..."></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- NOVO: B2 - Assets Físicos (Uploads Múltiplos) -->
+                    <section id="b2" class="block-section">
+                        <div class="space-y-6">
+                            <div class="glass-panel p-8 rounded-2xl border-l-4 border-l-accent">
+                                <h3 class="text-xl font-bold text-white mb-2">📦 Recebimento de Materiais e Assets</h3>
+                                <p class="text-textMuted text-sm mb-6">Arquivos selecionados aqui serão salvos automaticamente na pasta do cliente.</p>
+                                
+                                <div class="space-y-6">
+                                    <!-- Logotipo / Identidade -->
+                                    <div class="bg-surface border border-border p-4 rounded-xl">
+                                        <label class="block font-bold text-white mb-1">Logo / Vetor da Marca</label>
+                                        <p class="text-xs text-textMuted mb-3">Isso irá para o Leitor de Marca e pasta `/brand`</p>
+                                        <input type="file" name="upload_logo[]" accept="image/*,.pdf,.eps,.ai,.svg" multiple class="input-premium p-2 text-sm bg-[#0f172a] !important">
+                                    </div>
+
+                                    <!-- PDF Manual da Marca -->
+                                    <div class="bg-surface border border-border p-4 rounded-xl">
+                                        <label class="block font-bold text-white mb-1">Manual da Marca (Brandbook)</label>
+                                        <p class="text-xs text-textMuted mb-3">Apenas PDFs ou apresentações.</p>
+                                        <input type="file" name="upload_brandbook" accept=".pdf,.ppt,.pptx" class="input-premium p-2 text-sm bg-[#0f172a] !important">
+                                    </div>
+
+                                    <!-- Múltiplas Fotos/Assets de Serviço -->
+                                    <div class="bg-surface border border-border p-4 rounded-xl">
+                                        <label class="block font-bold text-white mb-1">Fotos / Banco de Arquivos Adicionais</label>
+                                        <p class="text-xs text-textMuted mb-3">Imagens em alta qualidade para popular a `/assets`.</p>
+                                        <input type="file" name="upload_fotos[]" accept="image/*" multiple class="input-premium p-2 text-sm bg-[#0f172a] !important">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- NOVO: B3 - Pesquisa de Autoridade e GMB -->
+                    <section id="b3" class="block-section">
+                        <div class="space-y-6">
+                            <div class="glass-panel p-8 rounded-2xl">
+                                <h3 class="text-xl font-bold text-white mb-4">⭐ Prova Social e Autoridade</h3>
+                                <p class="text-textMuted text-sm mb-6">Informações cruciais para o módulo e as quebras de objeções de vendas no Copy.</p>
+                                
+                                <div class="space-y-6">
+                                    <div>
+                                        <label class="block font-bold text-white mb-2">Link do Google Meu Negócio / Instagram</label>
+                                        <input type="url" name="link_gmb" class="input-premium" placeholder="https://">
+                                    </div>
+                                    
+                                    <div class="bg-surface border border-border p-4 rounded-xl">
+                                        <label class="block font-bold text-white mb-1">Prints e Arquivos de Feedbacks</label>
+                                        <p class="text-xs text-textMuted mb-3">Upload focado só em vitórias e testemunhos de clientes.</p>
+                                        <input type="file" name="upload_prints[]" accept="image/*" multiple class="input-premium p-2 text-sm bg-[#0f172a] !important">
+                                    </div>
+
+                                    <div>
+                                        <div class="flex justify-between items-center mb-2">
+                                            <label class="font-bold text-white">Transcrição Direta de Feedbacks</label>
+                                            <button type="button" onclick="toggleMic('transcricao_feedbacks', this)" class="mic-btn bg-surface px-2 py-1 rounded border border-border">🎤 Áudio</button>
+                                        </div>
+                                        <textarea id="transcricao_feedbacks" name="transcricao_feedbacks" rows="3" class="input-premium" placeholder="Digite ou fale depoimentos textuais..."></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Nav Buttons inside App -->
+                    <div class="flex justify-between items-center mt-10 pt-6 border-t border-border">
+                        <button type="button" class="px-6 py-3 rounded-xl bg-surface hover:bg-surfaceHover border border-border text-white font-medium transition disabled:opacity-50" onclick="prevBlock()" id="btn-prev">
+                            ← Voltar
+                        </button>
+                        <button type="button" class="px-8 py-3 rounded-xl bg-accent hover:bg-indigo-400 text-white font-bold transition shadow-lg shadow-accent/20" onclick="nextBlock()" id="btn-next">
+                            Próximo Bloco →
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <!-- Toast -->
+    <div id="toast" class="toast glass-panel border-l-4 border-l-success px-5 py-4 rounded-xl shadow-xl">
+        <span class="text-white font-medium" id="toast-msg">Sucesso!</span>
+    </div>
+
+    <script>
+        const store = {
+            current: 0,
+            blocks: [
+                { id: 'b0', title: '1. Core & Arquitetura', desc: 'Identificação fundamental do cliente' },
+                { id: 'b1', title: '2. Dores & Produto', desc: 'Copy, Oferta e StoryBrand.' },
+                { id: 'b2', title: '3. Anexos / Assets', desc: 'Recebimento de PDFs, Logos e Fotos.' },
+                { id: 'b3', title: '4. Autoridade e Prova', desc: 'Pesquisa, Feedbacks e GMB.' }
+            ]
+        };
+
+        function startNewProject() {
+            document.getElementById('screen-splash').style.display = 'none';
+            document.getElementById('screen-app').classList.add('active');
+            renderNav(); goToBlock(0);
+        }
+
+        function updateSlug(val) {
+            document.getElementById('projeto_slug').value = val.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+        }
+
+        function renderNav() {
+            const nav = document.getElementById('sidebar-nav');
+            nav.innerHTML = store.blocks.map((b, i) => `
+                <button onclick="goToBlock(${i})" class="nav-item w-full text-left px-4 py-3 rounded-lg flex flex-col ${i === store.current ? 'active' : 'text-textMuted hover:bg-surfaceHover'}">
+                    <span class="text-[10px] font-mono uppercase tracking-wider mb-1 opacity-70">Passo 0${i+1}</span>
+                    <span>${b.title}</span>
+                </button>
+            `).join('');
+            document.getElementById('progress-bar').style.width = `${((store.current + 1) / store.blocks.length) * 100}%`;
+        }
+
+        function goToBlock(index) {
+            if(index < 0 || index >= store.blocks.length) return;
+            document.querySelectorAll('.block-section').forEach(el => el.classList.remove('active'));
+            document.getElementById(store.blocks[index].id).classList.add('active');
+            
+            document.getElementById('block-title').innerText = store.blocks[index].title;
+            document.getElementById('block-desc').innerText = store.blocks[index].desc;
+            
+            store.current = index; renderNav();
+            document.getElementById('btn-prev').disabled = index === 0;
+            
+            const btnNext = document.getElementById('btn-next');
+            if (index === store.blocks.length - 1) {
+                btnNext.innerHTML = '⚙️ Finalizar e Processar (Salvar no File System)';
+                btnNext.type = "submit"; // Muda para submit real do formulário
+                btnNext.onclick = null;
+            } else {
+                btnNext.innerHTML = 'Próximo Bloco →';
+                btnNext.type = "button";
+                btnNext.onclick = nextBlock;
+            }
+        }
+        function nextBlock() { goToBlock(store.current + 1); }
+        function prevBlock() { goToBlock(store.current - 1); }
+
+        // Speech API Fix: Atualizando em tempo real usando interimResults
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        let recognition = SpeechRecognition ? new SpeechRecognition() : null;
+        if(recognition){
+            recognition.continuous = true;
+            recognition.interimResults = true; // Necessário para real-time!
+            recognition.lang = 'pt-BR';
+        }
+
+        let isRecording = false;
+        let currentTextArea = null;
+
+        function toggleMic(inputId, btn) {
+            if (!recognition) return alert('Seu navegador não suporta Web Speech API.');
+            if (isRecording) {
+                recognition.stop();
+                isRecording = false;
+                btn.classList.remove('mic-active');
+                btn.innerText = '🎤 Áudio';
+                return;
+            }
+            currentTextArea = document.getElementById(inputId);
+            recognition.start();
+            isRecording = true;
+            btn.classList.add('mic-active');
+            btn.innerText = '⏹️ Gravando...';
+
+            let baseText = currentTextArea.value ? currentTextArea.value + ' ' : '';
+            
+            recognition.onresult = (e) => {
+                let interim = '';
+                let finalAppend = '';
+                for (let i = e.resultIndex; i < e.results.length; ++i) {
+                    if (e.results[i].isFinal) {
+                        finalAppend += e.results[i][0].transcript + ' ';
+                        baseText += e.results[i][0].transcript + ' ';
+                    } else {
+                        interim += e.results[i][0].transcript;
+                    }
+                }
+                // BUG FIX: Combina o texto gravado (baseText) com as palavras provisórias (interim)
+                currentTextArea.value = baseText + interim;
+            };
+            recognition.onerror = () => { isRecording = false; btn.classList.remove('mic-active'); btn.innerText = '🎤 Erro'; };
+            recognition.onend = () => { if(isRecording) recognition.start(); };
+        }
+
+        // Integração com o Backend PHP local (Processor)
+        async function submitIntake(e) {
+            e.preventDefault();
+            const form = document.getElementById('intake-form');
+            if(!document.getElementById('projeto_slug').value) {
+                alert('Preencha o Nome do Projeto primeiro!');
+                goToBlock(0);
+                return;
+            }
+            
+            document.getElementById('loader').classList.add('active');
+            document.getElementById('loader-status').innerText = 'Enviando arquivos e markdowns para c:\\skills\\intake_processor.php...';
+            
+            const formData = new FormData(form);
+            
+            try {
+                // Alvo: Root server (presumindo localhost php server rodando de c:\skills)
+                const res = await fetch('../intake_processor.php', {
+                    method: 'POST',
+                    body: formData
+                });
+                const data = await res.json();
+                if(data.success) {
+                    document.getElementById('loader').classList.remove('active');
+                    alert(`✅ SUCESSO!\nTudo orquestrado perfeitamente!\nPasta física criada e hierarquia do projeto montada em:\n${data.path}`);
+                    window.location.reload();
+                } else {
+                    throw new Error(data.message || 'Erro desconhecido');
+                }
+            } catch (err) {
+                document.getElementById('loader').classList.remove('active');
+                alert(`❌ ATENÇÃO!\nOcorreu um erro ao comunicar com intake_processor.php.\nIsso é normal se você abriu o arquivo direto (file://). Para que as pastas reais sejam criadas no Windows, você precisa abrir a página através do servidor local (ex: http://localhost:8000/projetos/wf01-intake.html) com o PHP ativado.\n\nMais detalhes do erro: ${err.message}`);
+                console.error(err);
+            }
+        }
+    </script>
+</body>
+</html>
