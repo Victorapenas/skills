@@ -1,83 +1,53 @@
 ---
 name: benchmark
 description: >
-  Pesquisa de mercado (Caçador + Espião). REGENERATIVO. v6.1 COMPLIANCE CIRÚRGICO.
-  Ative após briefing aprovado, antes de estrutura. 
-  ATENÇÃO: Este agente trabalha separadamente (Caçador = referências, Espião = Concorrência).
+  Orquestrador de Inteligência e Mercado (Caçador + Espião).
+  Coordena a pesquisa de referências e análise de concorrência profunda.
+  Fase 2 do sistema PHP Landing Page Factory.
 ---
 
-# Benchmark v6.1 — COMPLIANCE CIRÚRGICO
+# Benchmark v6.1 — ORQUESTRADOR DE INTELIGÊNCIA
 
 ## Função
-Transformar sinais do mercado em inteligência prática baseada em dados reais e validados.
-Alimenta: Estrutura LP, Copy, SEO, Direção Visual.
+Coordenar a atuação dos dois agentes de pesquisa para alimentar o projeto com dados reais de mercado, concorrência e geolocalização.
 
-## ANTES DE EXECUTAR / MODO DE OPERAÇÃO
-1. Ler `/evolution/cacador.md` e `/evolution/espiao.md` ANTES de qualquer ação.
-2. O Caçador (02.1) e o Espião (02.2) **DEVEM ATUAR DE FORMA INDEPENDENTE E EM ARQUIVOS SEPARADOS.**
-3. **REGRA R8 (ANTI-ALUCINAÇÃO):** Toda URL deve ser acessada e validada quanto ao status (online) e nicho (correto) antes de entrar na análise.
-4. **INPUT OBRIGATÓRIO:** `handoff.md` (Extrair nicho, subnicho, referências, concorrentes, região e Schwartz).
+## ANTES DE EXECUTAR
+1. Confirmar se o `handoff.md` está presente e aprovado.
+2. Ler `/evolution/benchmark.md`.
+3. Disparar a execução paralela dos agentes abaixo.
 
----
+## 👥 AGENTES SOB COORDENAÇÃO
 
-## 🛑 AS DIRETRIZES DE EXECUÇÃO (v6.1)
+### 02.1 — CAÇADOR DE REFERÊNCIAS
+- **Função:** Encontrar as melhores referências de design, copy e estrutura.
+- **Instruções:** SEGUIR `/skills/cacador/SKILL.md`.
+- **Entrega:** `/projetos/[nome]/referencias.md`.
 
-### FASE 0 — DESCONSTRUÇÃO DE INSPIRAÇÃO
-Analise as `url_referencia` do cliente em 3 dimensões (Visual, Comunicação e Negócio) para entender o "porquê" da admiração.
-
-### FASE 1 — 3 FRENTES DE PESQUISA (CAÇADOR 02.1)
-O arquivo `referencias.md` deve conter 3 frentes usando fontes específicas:
-1.  **PLATAFORMAS DE LP:** Lapa Ninja, Landingfolio, Land-book, Dribbble, Behance.
-2.  **ESPIONAGEM DE ANÚNCIOS (3 Círculos):** Meta Ad Library, Google Ads Transparency, TikTok Creative Center.
-    *   **Círculo 1 (Local):** Concorrentes na região imediata.
-    *   **Círculo 2 (Cidade):** Dominantes no município.
-    *   **Círculo 3 (Estado/Nacional):** Líderes que definem o padrão.
-3.  **BANCOS DE IMAGEM:** Unsplash, Pexels, Freepik, Flaticon, Adobe Stock.
-
-### FASE 2 — ANÁLISE PROFUNDA EM 5 BLOCOS (ESPIÃO 02.2)
-O arquivo `analise-concorrencia.md` deve analisar cada LP (5 diretas + 3 adjacentes) fracionada em:
-1.  **Bloco 1:** Above the Fold (Headline exata, Schwartz, Mobile vs Desktop).
-2.  **Bloco 2:** Seções 2-3 (Formatos, Hierarquia visual).
-3.  **Bloco 3:** Meio (Prova Social, Quantidade, Credibilidade).
-4.  **Bloco 4:** Zona de Conversão (Oferta, CTA Hex, Urgência, Forms).
-5.  **Bloco 5:** Rodapé (FAQ, Selos de Confiança).
-**EXTRAÇÃO VISUAL:** HEX exatos, Tipografia (Família/Peso/Size) e Espaçamento.
-
-### FASE 3 — INTELIGÊNCIA CONSOLIDADA (F/T/E)
-Classificar elementos coletados:
-- **[FUNDAMENTO]**: > 70% ocorrência.
-- **[TENDÊNCIA]**: 30-70% ocorrência.
-- **[EXCESSO]**: < 30% ocorrência.
-
-### FASE 4 — ANÁLISE CRUZADA E RÉGUA PADRÃO
-Cruzar **Inspiração × Realidade Local** para identificar Oportunidades, Riscos e Gaps.
-Aplicar a **Régua de 7 Critérios** (1-5 estrelas) em todas as referências principais.
+### 02.2 — ESPIÃO DE CONCORRÊNCIA
+- **Função:** Estudo profundo de mercado, vizinhança, ads e análise de concorrência.
+- **Instruções:** SEGUIR `/skills/espiao/SKILL.md`.
+- **Entrega:** `/projetos/[nome]/analise-concorrencia.md`.
 
 ---
 
-## FORMATO DE SAÍDA OBRIGATÓRIO
+## 🛑 DIRETRIZES DE CONSOLIDAÇÃO (Aprovadas pelo Maestro)
 
-### /projetos/[nome]/referencias.md
-- **Cabeçalho** (Projeto, Agente, Nicho, Schwartz).
-- **Fase 0** (Desconstrução de Inspirações).
-- **Seção 1** (Frente 1 - LPs).
-- **Seção 2** (Frente 2 - Anúncios 3 Círculos).
-- **Seção 3** (Frente 3 - Banco de Imagens).
-- **Análise Cruzada** (Oportunidades, Riscos, Gaps).
-- **URLs Descartadas (R8)**.
+### 1. CONSOLIDAÇÃO FINAL (Pós-Entregas)
+Uma vez que ambos os agentes entregarem seus arquivos, o Orquestrador deve consolidar a inteligência:
+- **Cruzamento Inspiração × Realidade Local:** O que as referências nacionais/globais fazem que os concorrentes locais ignoram?
+- **Régua de 7 Critérios:** Pontuar as 5 principais referências de cada arquivo na escala 1-5.
 
-### /projetos/[nome]/analise-concorrencia.md
-- **Cabeçalho** (Projeto, Agente, Nicho, Região).
-- **Parte 1** (Mapa de Anunciantes D/I/A por Círculo).
-- **Parte 2** (Análise em 5 Blocos - Desktop + Mobile).
-- **Parte 3** (Inteligência F/T/E consolidada).
-- **Ranking** (Régua Padrão - Tabela).
-- **Recomendações Práticas** (5-10 itens acionáveis).
-- **URLs Descartadas (R8)**.
+### 2. CHECKLIST DE QUALIDADE (GATEKEEPING)
+O Orquestrador só libera a Fase 3 (Estrutura) se:
+- [ ] R8 e R9 foram cumpridos por ambos os agentes.
+- [ ] O Espião incluiu a Geolocalização e Ecossistema Digital.
+- [ ] O Caçador incluiu a desconstrução das inspirações do cliente.
+- [ ] Os HEX exatos e escalas foram documentados.
 
-## CHECKLIST DO MAESTRO
-- R8 cumprido (nenhuma URL morta ou nicho errado)?
-- Análise de 5 blocos sem truncamento?
-- Diferenças Desktop/Mobile presentes?
-- HEX exatos presentes?
-- Régua Padrão e F/T/E incluídos?
+---
+
+## FORMATO DE SAÍDA — relatorio-inteligencia.md
+Breve sumário executivo (não repetir os arquivos individuais) focando em:
+1. **O MAIOR DIFERENCIAL LOCAL IDENTIFICADO.**
+2. **PADRÕES [FUNDAMENTO] QUE NÃO PODEM FALTAR.**
+3. **PONTOS CEGOS DOS CONCORRENTES.**

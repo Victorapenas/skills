@@ -1,29 +1,33 @@
-# HANDOFF: Canal Hamburgueria (v6.1 Compliance)
+---
+nicho: "Hamburgueria e Pizzaria"
+subnicho: "Delivery Gourmet e Fast Food Local"
+concorrentes_diretos: ["https://amora-hamburgueria-artesanal.menustic.com/", "https://www.facebook.com/775PizzariaHamburgueria"]
+url_referencia_1: "https://www.bullguer.com.br"
+url_referencia_2: "https://www.dominos.com.br"
+regiao: "Eunápolis, BA"
+nivel_consciencia: 3
+tipo_lp_recomendada: "conversão"
+diferencial: "Point mais comentado de Eunápolis, app próprio funcional e entrega rápida"
+dor_externa: "Fome noturna e desejo de comida point sem sair de casa"
+dor_interna: "Frustração com atrasos e taxas abusivas em apps de entrega"
+dor_filosofica: "Toda refeição deve alegrar o seu dia e valer cada centavo"
+baseline: "Hoje depende do iFood (~27% taxa), sem canal central de vendas digital"
+metadata:
+  projeto: "canal-hamburgueria"
+  agente: "Entrevistador 01"
+  data: "2026-03-22"
+---
 
-## Dados de Contexto
-- **Nicho:** Alimentação (Hamburgueria e Pizzaria)
-- **Subnicho:** Delivery Rápido / Food Truck de Luxo (na prática um salão grande)
-- **Região:** Eunápolis, BA (Cidade média, interior da Bahia)
-- **Temperatura Lead (Schwartz):** 3 (Solução Consciente)
-- **Ação Principal:** Download App / WhatsApp
+# Handoff de Inteligência — Canal Hamburgueria
 
-## Referências Estéticas (Handoff)
-- **url_referencia_1:** https://www.bullguer.com.br (Visual Premium, Flat Design, Fotos Clean)
-- **url_referencia_2:** https://www.dominos.com.br (Tech/Delivery, Velocidade, CTAs Fortes)
+## Resumo Estratégico
+O cliente possui forte presença social (Instagram 12K+), app funcional e boa reputação local. O objetivo da LP é atuar como o HUB central de pedidos, eliminando a intermediação excessiva dos marketplaces e profissionalizando a captura de tráfego pago em Eunápolis.
 
-## Concorrentes Locais (Alvos do Espião)
-1. **Amora Hamburgueria:** https://amora-hamburgueria-artesanal.menustic.com/ (Top local)
-2. **San Diego Pizzas:** @sandiego.eunapolis (Instagram)
-3. **775 Pizzaria:** facebook.com/775PizzariaHamburgueria
-4. **House Burger 190:** (Pesquisar GMB)
-5. **Bom Burger:** (Ifoood / Social)
+## Filtros de Pesquisa
+- **Geográfico:** Eunápolis (Círculo 1) → Extremo Sul da Bahia (Círculo 2) → Nacional/Inspiração (Círculo 3).
+- **Estilo Visual:** Dark mode, food photography agressiva ( close-ups, brilho, cores fortes), tipografia bold.
+- **Estrutura:** Hero focado em Conversão (CTA download/whatsapp) + Cardápio + Prova Social (Reviews Google) + Localização Expressa.
 
-## Diretrizes Caçador (02.1)
-- **Fase 0:** Desconstruir Bullguer e Domino's.
-- **3 Círculos:** Focar no Sul da Bahia (Porto Seguro, Teixeira de Freitas, Itabuna) como benchmark regional.
-- **3-5 Adj:** Açaí, Sorveterias gourmet, Choperias locais.
-
-## Diretrizes Espião (02.2)
-- **R8:** Validar se Amora e outros ainda estão ativos (Amora via Menustic está OK).
-- **5 Blocos:** Analisar mobile do link da bio dos concorrentes.
-- **F/T/E:** Identificar se o padrão em Eunápolis é o link do iFood ou App Próprio.
+## Alvos Críticos
+- Monitorar Amora Hamburgueria (D) e 775 Pizzaria (D).
+- Desconstruir Bullguer (Visual) e Domino's (Funcional/Checkout).

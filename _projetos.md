@@ -7,5 +7,7 @@
 
 **Projeto ativo:** nenhum
 
+Use- [canal-hamburgueria](/projetos/canal-hamburgueria/) | Hamburgueria e Pizzaria (Eunápolis, BA) | Status: 🟢 Ativo | Etapa: WF-01 Intake
+
 Use `@novo-projeto [nome]` para iniciar um novo projeto.
 Use `@projeto [nome]` para retomar um projeto existente.
