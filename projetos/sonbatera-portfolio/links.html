@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sonbatera | Links Oficiais</title>
+<meta name="description" content="Links oficiais de Emerson Silveira (Sonbatera) — Baterista profissional.">
+<link rel="icon" type="image/png" href="assets/images/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@500;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config={theme:{extend:{colors:{stage:'#030303',panel:'#0a0a0a',gold:'#D4AF37'},fontFamily:{sans:['Inter','sans-serif'],heading:['Montserrat','sans-serif']}}}}
+</script>
+<script src="https://unpkg.com/@phosphor-icons/web"></script>
+<style>
+body { background-color: #030303; color: #fff; }
+.bg-glass { background: rgba(10, 10, 10, 0.6); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(212, 175, 55, 0.2); }
+.link-card { transition: all 0.3s ease; }
+.link-card:hover { transform: translateY(-3px); border-color: rgba(212, 175, 55, 0.8); box-shadow: 0 10px 25px rgba(212, 175, 55, 0.15); background: rgba(212, 175, 55, 0.05); }
+.bg-ambient { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: url('assets/images/hero/hero-bg-desktop.png') center/cover no-repeat; filter: brightness(0.3) blur(8px); will-change: transform; }
+</style>
+</head>
+<body class="antialiased font-sans min-h-screen flex flex-col items-center justify-center p-5 select-none" oncontextmenu="return false;" ondragstart="return false;" onselectstart="return false;">
+
+<!-- Fundo imersivo -->
+<div class="bg-ambient"></div>
+<div class="fixed inset-0 bg-gradient-to-b from-stage/40 via-transparent to-stage z-[-1]"></div>
+
+<main class="w-full max-w-md mx-auto flex flex-col items-center z-10 py-10">
+  
+  <!-- Avatar / Perfil -->
+  <div class="relative mb-6 group">
+    <div class="absolute inset-0 bg-gold/30 blur-xl rounded-full scale-110 group-hover:scale-125 transition-transform duration-500"></div>
+    <img src="assets/images/gallery/IMG_1100.JPG" alt="Emerson Silveira" class="relative w-32 h-32 md:w-36 md:h-36 object-cover object-top rounded-full border-2 border-gold/50 shadow-[0_0_20px_rgba(212,175,55,0.4)]">
+    <!-- Selo verificado/drummer -->
+    <div class="absolute bottom-1 right-1 bg-black rounded-full p-1 border border-gold/30 shadow-lg">
+      <i class="ph-fill ph-drum text-gold text-lg"></i>
+    </div>
+  </div>
+
+  <!-- Título -->
+  <h1 class="font-heading text-3xl font-bold uppercase tracking-wide text-center drop-shadow-md mb-1">
+    Emerson <span class="text-gold">Silveira</span>
+  </h1>
+  <p class="text-gray-400 font-medium tracking-widest uppercase text-xs mb-8 flex items-center gap-2">
+    <i class="ph-fill ph-music-notes text-gold/70"></i> Baterista Profissional
+  </p>
+
+  <!-- Lista de Links -->
+  <div class="w-full flex flex-col gap-4">
+    
+    <!-- Site Oficial -->
+    <a href="index.html" class="link-card bg-glass w-full rounded-xl p-4 flex items-center justify-between group">
+      <div class="flex items-center gap-4">
+        <div class="w-12 h-12 rounded-lg bg-gold/10 flex items-center justify-center group-hover:bg-gold/20 transition-colors">
+          <i class="ph-fill ph-globe text-gold text-2xl"></i>
+        </div>
+        <div class="text-left">
+          <h2 class="font-heading font-bold text-lg uppercase tracking-wide text-white group-hover:text-gold transition-colors">Site Oficial</h2>
+          <p class="text-xs text-gray-400">Meu portfólio completo</p>
+        </div>
+      </div>
+      <i class="ph-bold ph-caret-right text-gray-500 group-hover:text-gold transition-colors"></i>
+    </a>
+
+    <!-- WhatsApp -->
+    <a href="https://wa.me/557381702616?text=Olá%20Sonbatera!" target="_blank" class="link-card bg-glass w-full rounded-xl p-4 flex items-center justify-between group">
+      <div class="flex items-center gap-4">
+        <div class="w-12 h-12 rounded-lg bg-[#25D366]/10 flex items-center justify-center group-hover:bg-[#25D366]/20 transition-colors">
+          <i class="ph-fill ph-whatsapp-logo text-[#25D366] text-2xl"></i>
+        </div>
+        <div class="text-left">
+          <h2 class="font-heading font-bold text-lg uppercase tracking-wide text-white group-hover:text-[#25D366] transition-colors">WhatsApp</h2>
+          <p class="text-xs text-gray-400">Shows, gravações e orçamentos</p>
+        </div>
+      </div>
+      <i class="ph-bold ph-caret-right text-gray-500 group-hover:text-[#25D366] transition-colors"></i>
+    </a>
+
+    <!-- YouTube -->
+    <a href="https://www.youtube.com/@sonbateraEmersonSilveira" target="_blank" class="link-card bg-glass w-full rounded-xl p-4 flex items-center justify-between group">
+      <div class="flex items-center gap-4">
+        <div class="w-12 h-12 rounded-lg bg-[#FF0000]/10 flex items-center justify-center group-hover:bg-[#FF0000]/20 transition-colors">
+          <i class="ph-fill ph-youtube-logo text-[#FF0000] text-2xl"></i>
+        </div>
+        <div class="text-left">
+          <h2 class="font-heading font-bold text-lg uppercase tracking-wide text-white group-hover:text-[#FF0000] transition-colors">YouTube</h2>
+          <p class="text-xs text-gray-400">Assista meus vídeos</p>
+        </div>
+      </div>
+      <i class="ph-bold ph-caret-right text-gray-500 group-hover:text-[#FF0000] transition-colors"></i>
+    </a>
+
+    <!-- Instagram -->
+    <a href="https://www.instagram.com/sonbatera/" target="_blank" class="link-card bg-glass w-full rounded-xl p-4 flex items-center justify-between group">
+      <div class="flex items-center gap-4">
+        <div class="w-12 h-12 rounded-lg bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] p-[1px] group-hover:shadow-[0_0_15px_rgba(220,39,67,0.4)] transition-shadow">
+          <div class="w-full h-full bg-panel rounded-[7px] flex items-center justify-center">
+            <i class="ph-fill ph-instagram-logo text-transparent bg-clip-text bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] text-2xl"></i>
+          </div>
+        </div>
+        <div class="text-left">
+          <h2 class="font-heading font-bold text-lg uppercase tracking-wide text-white group-hover:text-pink-500 transition-colors">Instagram</h2>
+          <p class="text-xs text-gray-400">Acompanhe o dia a dia</p>
+        </div>
+      </div>
+      <i class="ph-bold ph-caret-right text-gray-500 group-hover:text-pink-500 transition-colors"></i>
+    </a>
+
+  </div>
+
+  <!-- Footer do Linktree -->
+  <div class="mt-12 text-center">
+    <div class="w-10 h-10 mx-auto bg-black/50 rounded-full flex items-center justify-center border border-gray-800 mb-3">
+      <i class="ph-fill ph-vinyl-record text-gold animate-spin-slow"></i>
+    </div>
+    <p class="text-[10px] text-gray-600 uppercase tracking-widest font-heading">&copy; 2026 Sonbatera</p>
+  </div>
+</main>
+
+<script>
+// Mesma segurança do portfólio
+document.onkeydown = function(e) {
+  if (e.keyCode == 123) return false; 
+  if (e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'C'.charCodeAt(0) || e.keyCode == 'J'.charCodeAt(0))) return false;
+  if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) return false; 
+};
+</script>
+</body>
+</html>

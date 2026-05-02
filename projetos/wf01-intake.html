@@ -112,9 +112,9 @@
         .toast.show { transform: translateY(0); opacity: 1; }
 
         /* Loader para Envio */
-        .loader-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 999; display: none; flex-direction: column; items-center; justify-content: center; backdrop-filter: blur(5px); }
+        .loader-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 999; display: none; flex-direction: column; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
         .loader-overlay.active { display: flex; }
-        .spinner { width: 50px; height: 50px; border: 5px solid rgba(99, 102, 241, 0.3); border-top-color: theme('colors.accent'); border-radius: 50%; animation: spin 1s linear infinite; mb-4; }
+        .spinner { width: 50px; height: 50px; border: 5px solid rgba(99, 102, 241, 0.3); border-top-color: theme('colors.accent'); border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 1rem; }
         @keyframes spin { 100% { transform: rotate(360deg); } }
     </style>
 </head>
